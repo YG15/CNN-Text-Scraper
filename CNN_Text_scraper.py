@@ -80,7 +80,8 @@ def all_dates_range_texts(automated):
     start_date =date(1900,1,1)
     while start_date<date(1999,9,11):
         print ("Start day has to be after September 11th 1999")
-        #until mid 2000's there are missing days which cause bug in the script- shoul be later fixed
+        #until mid 2000's there are missing days and problematic transcripts
+        # which cause bug in the script- shoul be later fixed
         if automated == True:
             year_start = input("Enter the year to start from from [4 digits]: ")
             month_start = input("Enter the month to start from from [2 digits]: ")
