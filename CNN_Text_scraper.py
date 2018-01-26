@@ -77,28 +77,32 @@ def text_scraper(url):
 # The function recieves dates and use the function above to output a dictionary of processed texts
 def all_dates_range_texts(automated):
     print("This is a CNN transcripts web text scraper, please enter the date from which you want to draw text from...")
-    if automated == True:
-        year_start = input("Enter the year to start from from [4 digits]: ")
-        month_start = input("Enter the month to start from from [2 digits]: ")
-        day_start = input("Enter the day to start from from [2 digits]: ")
-        year_end = input("Enter the year to stop at [4 digits]: ")
-        month_end = input("Enter the month to stop at [2 digits]: ")
-        day_end = input("Enter the day to stop at [2 digits]: ")
-    else:
-        print("example case presented dates between 24.01.2018 to 24.01.2018")
-        year_start = 2018
-        year_end = 2018
-        month_start = 1
-        month_end = 1
-        day_start = 24
-        day_end = 24
+    start_date =date(1900,1,1)
+    while start_date<date(1999,9,11):
+        print ("Start day has to be after September 11th 1999")
+        #until mid 2000's there are missing days which cause bug in the script- shoul be later fixed
+        if automated == True:
+            year_start = input("Enter the year to start from from [4 digits]: ")
+            month_start = input("Enter the month to start from from [2 digits]: ")
+            day_start = input("Enter the day to start from from [2 digits]: ")
+            year_end = input("Enter the year to stop at [4 digits]: ")
+            month_end = input("Enter the month to stop at [2 digits]: ")
+            day_end = input("Enter the day to stop at [2 digits]: ")
+        else:
+            print("example case presented dates between 24.01.2018 to 24.01.2018")
+            year_start = 2018
+            year_end = 2018
+            month_start = 1
+            month_end = 1
+            day_start = 24
+            day_end = 24
 
-    start_date = date(int(year_start), int(month_start), int(day_start))
-    end_date = date(int(year_end), int(month_end), int(day_end))
-    delta = end_date - start_date  # timedelta
-    days_list = []
-    for i in range(delta.days + 1):
-        days_list.append((start_date + timedelta(days=i)).strftime("%Y.%m.%d"))
+        start_date = date(int(year_start), int(month_start), int(day_start))
+        end_date = date(int(year_end), int(month_end), int(day_end))
+        delta = end_date - start_date  # timedelta
+        days_list = []
+        for i in range(delta.days + 1):
+            days_list.append((start_date + timedelta(days=i)).strftime("%Y.%m.%d"))
 
     all_urls = []
     for day in days_list:
