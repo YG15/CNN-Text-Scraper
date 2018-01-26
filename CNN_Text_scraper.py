@@ -16,7 +16,8 @@ import requests
 import numpy as np
 from datetime import date, timedelta
 import urllib.request
-import lxml
+from tqdm import tqdm
+
 
 
 # The function recieve a URL (as string) and return all the children pages URL which includes transcript
@@ -106,7 +107,8 @@ def all_dates_range_texts(automated):
         all_urls.extend(day_child_urls)
 
     text_dic={}
-    for url in all_urls:
+    print ("Please wait while processing request....")
+    for url in tqdm(all_urls):
         text_dic [str(url)] = text_scraper(url)
     return (text_dic)
 
